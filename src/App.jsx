@@ -1,9 +1,11 @@
-import Card from './Card'
+import Field from "./Field";
 
 function App() {
   return (
-    <Card suit="hearts" value="12" faceUp={false} />
-  )
+    <div className="flex gap-6 flex-wrap">
+      <Field />
+    </div>
+  );
 }
 
-export default App
+export default App;
