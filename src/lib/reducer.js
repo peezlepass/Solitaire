@@ -10,8 +10,7 @@ export function init() {
   };
 
   const deck = createDeck();
-
-  for (let i = 0; i < initialState.stacks.length; i + 1) {
+  for (let i = 0; i < initialState.stacks.length; i++) {
     for (let j = 0; j < i + 1; j++) {
       initialState.stacks[i].push(deck.pop());
     }

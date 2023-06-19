@@ -5,7 +5,7 @@ import { useContext } from "react";
 import SolitaireContext from "./lib/context";
 
 export default function Field() {
-  const {state, disptch} = useContext(SolitaireContext)
+  const { state, disptch } = useContext(SolitaireContext);
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden">
       <div className="flex mb-8">
