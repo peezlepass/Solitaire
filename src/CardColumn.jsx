@@ -2,7 +2,7 @@ import Card from "./Card";
 
 export default function CardColumn({ cards }) {
   return (
-    <div className="flex flex-col -space-y-64">
+    <div className="flex flex-col -space-y-48">
       {cards.map((cardDefinition) => {
         return (
           <Card
