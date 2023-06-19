@@ -1,6 +1,25 @@
+import { createDeck } from "./deck";
+
 export function init() {
-  return { name: "James" };
+  const initialState = {
+    faceDownCards: [],
+    faceUpCards: [],
+    visibleFaceUpCards: 3,
+    spacesForAces: [[], [], [], []],
+    stacks: [[], [], [], [], [], [], []],
+  };
+
+  const deck = createDeck();
+
+  for (let i = 0; i < initialState.stacks.length; i + 1) {
+    for (let j = 0; j < i + 1; j++) {
+      initialState.stacks[i].push(deck.pop());
+    }
+  }
+
+  return initialState;
 }
+
 export function reducer(state, action) {
   return state;
 }
