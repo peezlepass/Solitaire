@@ -1,6 +1,6 @@
 import Card from "./Card";
 import CardColumn from "./CardColumn";
-import EmptySpaces from "./EmptySpaces";
+import AceSpace from "./AceSpace";
 import { useContext } from "react";
 import SolitaireContext from "./lib/context";
 
@@ -14,10 +14,10 @@ export default function Field() {
           <Card suit="diamonds" value="7" faceUp={true} />
         </section>
         <section className="flex gap-8">
-          <EmptySpaces />
-          <EmptySpaces />
-          <EmptySpaces />
-          <EmptySpaces />
+          <AceSpace cards={state.spacesForAces[0]} />
+          <AceSpace cards={state.spacesForAces[1]} />
+          <AceSpace cards={state.spacesForAces[2]} />
+          <AceSpace cards={state.spacesForAces[3]} />
         </section>
       </div>
       <div className="flex justify-between">

@@ -17,6 +17,8 @@ export function init() {
     initialState.stacks[i][initialState.stacks[i].length - 1].faceUp = true;
   }
 
+  initialState.spacesForAces[1].push(deck.pop());
+
   return initialState;
 }
 
