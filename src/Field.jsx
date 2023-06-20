@@ -25,8 +25,8 @@ export default function Field() {
         </section>
       </div>
       <div className="flex justify-between">
-        {state.stacks.map((stack) => {
-          return <CardColumn cards={stack} />;
+        {state.stacks.map((stack, index) => {
+          return <CardColumn key={index} cards={stack} />;
         })}
       </div>
     </div>
