@@ -19,6 +19,15 @@ export function init() {
 
   initialState.spacesForAces[1].push(deck.pop());
 
+  initialState.faceUpCards.push(deck.pop());
+  initialState.faceUpCards.push(deck.pop());
+  initialState.faceUpCards.push(deck.pop());
+  for (const card of initialState.faceUpCards) {
+    card.faceUp = true;
+  }
+
+  initialState.faceDownCards = deck;
+
   return initialState;
 }
 
