@@ -14,6 +14,7 @@ export function init() {
     for (let j = 0; j < i + 1; j++) {
       initialState.stacks[i].push(deck.pop());
     }
+    initialState.stacks[i][initialState.stacks[i].length - 1].faceUp = true;
   }
 
   return initialState;
