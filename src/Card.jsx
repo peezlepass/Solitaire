@@ -29,14 +29,16 @@ export default function Card({ suit, value, faceUp }) {
     >
       {faceUp ? (
         <>
-          <span className="absolute top-0.5 left-0.5 flex flex-col item-center -space-y-1">
+          <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
             <span className={`${colour} text-xl font-bold`}>
               {valueMap[value] || value}
             </span>
-            <span className="text-2xl">{suitEmojiMap[suit]}</span>
+            <span className={`${colour} text-2xl`}>{suitEmojiMap[suit]}</span>
           </span>
-          <span className="absolute bottom-0.5 right-0.5 flex flex-col item-center -space-y-1">
-            <span className="text-2xl totate-180">{suitEmojiMap[suit]}</span>
+          <span className="absolute bottom-0.5 right-0.5 flex flex-col items-center -space-y-1">
+            <span className={`${colour} text-2xl totate-180`}>
+              {suitEmojiMap[suit]}
+            </span>
             <span className={`${colour} text-xl font-bold rotate-180`}>
               {valueMap[value] || value}
             </span>
