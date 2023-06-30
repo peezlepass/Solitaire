@@ -8,8 +8,7 @@ import FaceUpRow from "./FaceUpRow";
 export default function Field() {
   const { state, disptch } = useContext(SolitaireContext);
   return (
-    <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden">
-      <div className="grid grid-cols-7 grid-rows-field gap-8">
+    <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">
         <Card faceUp={false} />
         <FaceUpRow
           cards={state.faceUpCards}
@@ -19,7 +18,7 @@ export default function Field() {
         <AceSpace cards={state.spacesForAces[1]} />
         <AceSpace cards={state.spacesForAces[2]} />
         <AceSpace cards={state.spacesForAces[3]} />
-      </div>
+      
       {state.stacks.map((stack, index) => {
         return <CardColumn key={index} cards={stack} />;
       })}
