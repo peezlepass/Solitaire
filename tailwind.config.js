@@ -13,6 +13,9 @@ export default {
       height: {
         card: "15.3414rem",
       },
+      gridTemplateRows: {
+        field: "15.3414rem 1fr",
+      },
     },
   },
   plugins: [],
