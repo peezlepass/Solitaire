@@ -21,3 +21,15 @@ function shuffle(array) {
 
   return array;
 }
+
+export function revealCards(array) {
+  return array.map((card) => {
+    return { ...card, faceUp: true };
+  });
+}
+
+export function hideCards(array) {
+  return array.map((card) => {
+    return { ...card, faceUp: false };
+  });
+}

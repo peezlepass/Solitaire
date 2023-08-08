@@ -1,4 +1,4 @@
-import { createDeck } from "./deck";
+import { createDeck, revealCards, hideCards } from "./deck";
 
 export function init() {
   const initialState = {
@@ -43,8 +43,15 @@ export function reducer(state, action) {
         faceDownCards: state.faceDownCards.slice(3),
       };
 
+    case "RESET_DECK":
+      const newFaceDownCards = hideCards(state.faceUpCards);
+      return {
+        ...state,
+        faceUpCards: revealCards(newFaceDownCards.slice(0, 3)),
+        faceDownCards: newFaceDownCards.slice(3),
+      };
     default:
-      return stack;
+      console.error("Received an unexpected action", error);
   }
   return state;
 }
