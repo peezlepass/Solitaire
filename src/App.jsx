@@ -5,9 +5,6 @@ import SolitaireContext from "./lib/context";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, null, init);
-  const onClick = () => {
-    console.log("clicked yellow!");
-  };
 
   const onMouseDown = () => {
     console.log("mouse down");
@@ -15,6 +12,10 @@ function App() {
 
   const onMouseUp = () => {
     console.log("mouse up");
+  };
+
+  const onMouseMove = () => {
+    console.log("mouse move");
   };
 
   return (
@@ -25,9 +26,9 @@ function App() {
     // </SolitaireContext.Provider>
     <div
       className="w-64 h-64 bg-yellow-400 absolute left-12 top-12"
-      onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
+      onMouseMove={onMouseMove}
     ></div>
   );
 }
