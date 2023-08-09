@@ -7,21 +7,24 @@ function App() {
   // const [state, dispatch] = useReducer(reducer, null, init);
 
   const [{ x, y }, changePosition] = useState({ x: 150, y: 150 });
+  const [{ xOffset, yOffset }, changeOffset] = useState({
+    xOffset: 0,
+    yOffset: 0,
+  });
 
-  const onMouseDown = (event) => {
-    // Start dragging
+  const onMouseDown = (downEvent) => {
+    const rect = downEvent.target.getBoundingClientRect();
+    changePosition({ x: downEvent.pageX, y: downEvent.pageY });
+    changeOffset({
+      xOffset: downEvent.pageX - rect.left,
+      yOffset: downEvent.pageY - rect.top,
+    });
 
-    // Set up a mouseMove handler on Window
-    // Gonna move the box every time it fires
-    const onMouseMove = (event) => {
-      changePosition({ x: event.pageX, y: event.pageY });
+    const onMouseMove = (moveEvent) => {
+      changePosition({ x: moveEvent.pageX, y: moveEvent.pageY });
     };
 
-    // Set up a mouseUp handler on Window
-    // gonna Stop dragging
-    // gonna turn off mousemove handler on window
-    const onMouseUp = (event) => {
-      console.log("onMouseUp");
+    const onMouseUp = (upEvent) => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
@@ -38,7 +41,7 @@ function App() {
     // </SolitaireContext.Provider>
     <div
       className="w-64 h-64 bg-yellow-400 absolute left-12 top-12"
-      style={{ left: x, top: y }}
+      style={{ left: x - xOffset, top: y - yOffset }}
       onMouseDown={onMouseDown}
     ></div>
   );
