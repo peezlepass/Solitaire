@@ -9,15 +9,25 @@ function App() {
   const [{ x, y }, changePosition] = useState({ x: 150, y: 150 });
 
   const onMouseDown = (event) => {
-    changePosition({ x: event.pageX, y: event.pageY });
-  };
+    // Start dragging
 
-  const onMouseUp = () => {
-    console.log("mouse up");
-  };
+    // Set up a mouseMove handler on Window
+    // Gonna move the box every time it fires
+    const onMouseMove = (event) => {
+      changePosition({ x: event.pageX, y: event.pageY });
+    };
 
-  const onMouseMove = () => {
-    console.log("mouse move");
+    // Set up a mouseUp handler on Window
+    // gonna Stop dragging
+    // gonna turn off mousemove handler on window
+    const onMouseUp = (event) => {
+      console.log("onMouseUp");
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
   };
 
   return (
@@ -30,8 +40,6 @@ function App() {
       className="w-64 h-64 bg-yellow-400 absolute left-12 top-12"
       style={{ left: x, top: y }}
       onMouseDown={onMouseDown}
-      onMouseUp={onMouseUp}
-      onMouseMove={onMouseMove}
     ></div>
   );
 }
