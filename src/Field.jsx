@@ -16,6 +16,9 @@ export default function Field() {
   const handleEmptyDeckClick = () => {
     dispatch({ type: "RESET_DECK" });
   };
+
+  console.log("=>state", state);
+
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">
       {state.faceDownCards.length ? (

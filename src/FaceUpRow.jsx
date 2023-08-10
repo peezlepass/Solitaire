@@ -10,8 +10,9 @@ export default function FaceUpRow({ cards, numberVisible }) {
         let onMouseDown;
         if (index === cards.length - 1) {
           onMouseDown = (event) => {
-            const { pageX, pageY } = event;
-            dispatch({
+            const { pageX, pageY, target } = event;
+            const { left, top } = target.getBoundingClientRect();
+            const action = {
               type: "SELECT_CARD_FROM_FACE_UP_ROW",
               payload: {
                 selected: [cardDefinition],
@@ -20,11 +21,13 @@ export default function FaceUpRow({ cards, numberVisible }) {
                   y: pageY,
                 },
                 selectionOffset: {
-                  x: 0,
-                  y: 0,
+                  x: pageX - left,
+                  y: pageY - top,
                 },
               },
-            });
+            };
+            console.log(action);
+            dispatch(action);
           };
         }
         return (

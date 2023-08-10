@@ -10,8 +10,8 @@ export function init() {
 
     selected: [],
     mouse: {
-      x: 0,
-      y: 0,
+      x: null,
+      y: null,
     },
     selectionOffset: {
       x: 0,
