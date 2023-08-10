@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import SolitaireContext from "./lib/context";
+
 const valueMap = {
   1: "A",
   11: "J",
@@ -28,13 +31,39 @@ export default function Card({
   onMouseUp,
 }) {
   const colour = suitColourMap[suit];
+
+  const { dispatch } = useContext(SolitaireContext);
+  const mouseDownHandler = (mouseDownEvent) => {
+    if (!onMouseDown) {
+      return;
+    }
+
+    const mouseMoveHandler = (mouseMoveEvent) => {
+      const { pageX, pageY } = mouseMoveEvent;
+      dispatch({
+        type: "MOVE_MOUSE",
+        payload: {
+          x: pageX,
+          y: pageY,
+        },
+      });
+    };
+    const mouseUpHandler = () => {
+      window.removeEventListener("mousemove", mouseMoveHandler);
+      window.removeEventListener("mouseup", mouseUpHandler);
+    };
+    window.addEventListener("mousemove", mouseMoveHandler);
+    window.addEventListener("mouseup", mouseUpHandler);
+
+    onMouseDown(mouseDownEvent);
+  };
   return (
     <div
       className={`${
         faceUp ? "border bg-white" : ""
-      } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative`}
+      } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative select-none`}
       onClick={onClick}
-      onMouseDown={onMouseDown}
+      onMouseDown={mouseDownHandler}
       onMouseUp={onMouseUp}
     >
       {faceUp ? (
