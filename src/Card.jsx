@@ -19,7 +19,14 @@ const suitColourMap = {
   clubs: "text-black",
 };
 
-export default function Card({ suit, value, faceUp, onClick }) {
+export default function Card({
+  suit,
+  value,
+  faceUp,
+  onClick,
+  onMouseDown,
+  onMouseUp,
+}) {
   const colour = suitColourMap[suit];
   return (
     <div
@@ -27,6 +34,8 @@ export default function Card({ suit, value, faceUp, onClick }) {
         faceUp ? "border bg-white" : ""
       } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative`}
       onClick={onClick}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
     >
       {faceUp ? (
         <>

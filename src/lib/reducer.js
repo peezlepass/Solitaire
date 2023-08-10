@@ -8,10 +8,10 @@ export function init() {
     spacesForAces: [[], [], [], []],
     stacks: [[], [], [], [], [], [], []],
 
-    selected: [{ suit: "hearts", value: 5, faceUp: true }],
+    selected: [],
     mouse: {
-      x: 200,
-      y: 200,
+      x: 0,
+      y: 0,
     },
     selectionOffset: {
       x: 0,
@@ -68,6 +68,15 @@ export function reducer(state, action) {
           x: action.payload.x,
           y: action.payload.y,
         },
+      };
+
+    case "SELECT_CARD_FROM_FACE_UP_ROW":
+      return {
+        ...state,
+        faceUpCards: state.faceUpCards.slice(0, -1),
+        selected: action.payload.selected,
+        mouse: action.payload.mouse,
+        selectionOffset: action.payload.selectionOffset,
       };
     default:
       console.error("Received an unexpected action", error);

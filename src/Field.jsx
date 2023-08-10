@@ -40,8 +40,8 @@ export default function Field() {
           cards={state.selected}
           className="absolute pointer-events-none"
           style={{
-            left: state.mouse.x,
-            top: state.mouse.y,
+            left: state.mouse.x - state.selectionOffset.x,
+            top: state.mouse.y - state.selectionOffset.y,
           }}
         />
       ) : undefined}
