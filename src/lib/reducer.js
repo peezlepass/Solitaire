@@ -7,6 +7,16 @@ export function init() {
     visibleFaceUpCards: 3,
     spacesForAces: [[], [], [], []],
     stacks: [[], [], [], [], [], [], []],
+
+    selected: [{ suit: "hearts", value: 5, faceUp: true }],
+    mouse: {
+      x: 200,
+      y: 200,
+    },
+    selectionOffset: {
+      x: 0,
+      y: 0,
+    },
   };
 
   const deck = createDeck();
@@ -49,6 +59,15 @@ export function reducer(state, action) {
         ...state,
         faceUpCards: revealCards(newFaceDownCards.slice(0, 3)),
         faceDownCards: newFaceDownCards.slice(3),
+      };
+
+    case "MOVE_MOUSE":
+      return {
+        ...state,
+        mouse: {
+          x: action.payload.x,
+          y: action.payload.y,
+        },
       };
     default:
       console.error("Received an unexpected action", error);

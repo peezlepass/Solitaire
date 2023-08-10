@@ -35,6 +35,16 @@ export default function Field() {
       {state.stacks.map((stack, index) => {
         return <CardColumn key={index} cards={stack} />;
       })}
+      {state.selected.length ? (
+        <CardColumn
+          cards={state.selected}
+          className="absolute pointer-events-none"
+          style={{
+            left: state.mouse.x,
+            top: state.mouse.y,
+          }}
+        />
+      ) : undefined}
     </div>
   );
 }
