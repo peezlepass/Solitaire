@@ -30,10 +30,10 @@ export default function Field() {
         cards={state.faceUpCards}
         numberVisible={state.visibleFaceUpCards}
       />
-      <AceSpace cards={state.spacesForAces[0]} />
-      <AceSpace cards={state.spacesForAces[1]} />
-      <AceSpace cards={state.spacesForAces[2]} />
-      <AceSpace cards={state.spacesForAces[3]} />
+      <AceSpace cards={state.spacesForAces[0]} aceSpaceIndex={0} />
+      <AceSpace cards={state.spacesForAces[1]} aceSpaceIndex={1} />
+      <AceSpace cards={state.spacesForAces[2]} aceSpaceIndex={2} />
+      <AceSpace cards={state.spacesForAces[3]} aceSpaceIndex={3} />
 
       {state.stacks.map((stack, index) => {
         return <CardColumn key={index} cards={stack} />;

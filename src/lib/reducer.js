@@ -1,3 +1,4 @@
+import AceSpace from "../AceSpace";
 import { createDeck, revealCards, hideCards } from "./deck";
 
 export function init() {
@@ -26,8 +27,6 @@ export function init() {
     }
     initialState.stacks[i][initialState.stacks[i].length - 1].faceUp = true;
   }
-
-  initialState.spacesForAces[1].push(deck.pop());
 
   initialState.faceUpCards.push(deck.pop());
   initialState.faceUpCards.push(deck.pop());
@@ -77,6 +76,29 @@ export function reducer(state, action) {
         selected: action.payload.selected,
         mouse: action.payload.mouse,
         selectionOffset: action.payload.selectionOffset,
+      };
+
+    case "PLACE_CARD_ON_ACE_SPACE":
+      return {
+        ...state,
+        selected: [],
+        spacesForAces: state.spacesForAces.map((aceSpace, index) => {
+          if (action.payload.aceSpaceIndex === index) {
+            // Is the space we dropped on
+            return [...aceSpace, state.selected[0]];
+          } else {
+            // Is not the space we dropped on
+            return aceSpace;
+          }
+        }),
+        mouse: {
+          x: null,
+          y: null,
+        },
+        selectionOffset: {
+          x: 0,
+          y: 0,
+        },
       };
     default:
       console.error("Received an unexpected action", error);
