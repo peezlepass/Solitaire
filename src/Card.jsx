@@ -51,6 +51,9 @@ export default function Card({
     const mouseUpHandler = () => {
       window.removeEventListener("mousemove", mouseMoveHandler);
       window.removeEventListener("mouseup", mouseUpHandler);
+      dispatch({
+        type: "RETURN_SELECTED_CARDS",
+      });
     };
     window.addEventListener("mousemove", mouseMoveHandler);
     window.addEventListener("mouseup", mouseUpHandler);

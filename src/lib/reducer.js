@@ -10,6 +10,9 @@ export function init() {
     stacks: [[], [], [], [], [], [], []],
 
     selected: [],
+    selectionSource: null,
+    selectionSourceIndex: null,
+
     mouse: {
       x: null,
       y: null,
@@ -59,6 +62,8 @@ export function reducer(state, action) {
         selected: action.payload.selected,
         mouse: action.payload.mouse,
         selectionOffset: action.payload.selectionOffset,
+        selectionSource: "stacks",
+        selectionSourceIndex: action.payload.stackIndex,
       };
     case "PLACE_CARDS_ON_STACK":
       const newStacks = state.stacks.map((stack, index) => {
@@ -94,6 +99,33 @@ export function reducer(state, action) {
           y: 0,
         },
       };
+    case "RETURN_SELECTED_CARDS":
+      if (state.selectionSource === "faceUpRow") {
+        return {
+          ...state,
+          selected: [],
+          selectionSource: null,
+          faceUpCards: [...state.faceUpCards, state.selected[0]],
+          visibleFaceUpCards: state.visibleFaceUpCards + 1,
+        };
+      } else if (state.selectionSource === "stacks") {
+        return {
+          ...state,
+          selected: [],
+          selectionSource: null,
+          selectionSourceIndex: null,
+          stacks: state.stacks.map((stack, index) => {
+            if (state.selectionSourceIndex === index) {
+              return [...stack, ...state.selected];
+            } else {
+              return stack;
+            }
+          }),
+        };
+      } else {
+        return state;
+      }
+
     case "REVEAL_CARDS":
       const nextThreeCards = state.faceDownCards.slice(0, 3).map((card) => {
         return { ...card, faceUp: true };
@@ -128,6 +160,8 @@ export function reducer(state, action) {
         selected: action.payload.selected,
         mouse: action.payload.mouse,
         selectionOffset: action.payload.selectionOffset,
+        selectionSource: "faceUpRow",
+        selectionSourceIndex: null,
       };
 
     case "PLACE_CARD_ON_ACE_SPACE":
