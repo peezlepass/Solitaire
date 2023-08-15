@@ -61,17 +61,29 @@ export function reducer(state, action) {
         selectionOffset: action.payload.selectionOffset,
       };
     case "PLACE_CARDS_ON_STACK":
+      const newStacks = state.stacks.map((stack, index) => {
+        if (action.payload.stackIndex === index) {
+          // Is the space we dropped on
+          return [...stack, ...state.selected];
+        } else {
+          // Is not the space we dropped on
+          return stack;
+        }
+      });
       return {
         ...state,
         selected: [],
-        stacks: state.stacks.map((stack, index) => {
-          if (action.payload.stackIndex === index) {
-            // Is the space we dropped on
-            return [...stack, ...state.selected];
-          } else {
-            // Is not the space we dropped on
-            return stack;
-          }
+        stacks: newStacks.map((stack) => {
+          return stack.map((card, cardIndex) => {
+            if (cardIndex === stack.length - 1) {
+              return {
+                ...card,
+                faceUp: true,
+              };
+            } else {
+              return card;
+            }
+          });
         }),
         mouse: {
           x: null,
