@@ -131,6 +131,18 @@ export function reducer(state, action) {
             return aceSpace;
           }
         }),
+        stacks: state.stacks.map((stack) => {
+          return stack.map((card, cardIndex) => {
+            if (cardIndex === stack.length - 1) {
+              return {
+                ...card,
+                faceUp: true,
+              };
+            } else {
+              return card;
+            }
+          });
+        }),
         mouse: {
           x: null,
           y: null,
