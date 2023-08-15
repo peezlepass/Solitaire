@@ -1,9 +1,11 @@
 import Card from "./Card";
 import { useContext } from "react";
 import SolitaireContext from "./lib/context";
+import EmptySpace from "./EmptySpace";
 
 export default function CardColumn({ cards, className, style, stackIndex }) {
   const { dispatch, state } = useContext(SolitaireContext);
+
   const onMouseUp = () => {
     if (state.selected.length) {
       dispatch({
@@ -12,6 +14,11 @@ export default function CardColumn({ cards, className, style, stackIndex }) {
       });
     }
   };
+
+  if (cards.length === 0) {
+    return <EmptySpace onMouseUp={onMouseUp} />;
+  }
+
   return (
     <div className={`flex flex-col -space-y-48 ${className}`} style={style}>
       {cards.map((cardDefinition, cardIndex) => {
