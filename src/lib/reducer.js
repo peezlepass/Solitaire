@@ -42,6 +42,30 @@ export function init() {
 
 export function reducer(state, action) {
   switch (action.type) {
+    case "SELECT_CARD_FROM_STACKS":
+      return state;
+    case "PLACE_CARDS_ON_STACK":
+      return {
+        ...state,
+        selected: [],
+        stacks: state.stacks.map((stack, index) => {
+          if (action.payload.stackIndex === index) {
+            // Is the space we dropped on
+            return [...stack, ...state.selected];
+          } else {
+            // Is not the space we dropped on
+            return stack;
+          }
+        }),
+        mouse: {
+          x: null,
+          y: null,
+        },
+        selectionOffset: {
+          x: 0,
+          y: 0,
+        },
+      };
     case "REVEAL_CARDS":
       const nextThreeCards = state.faceDownCards.slice(0, 3).map((card) => {
         return { ...card, faceUp: true };

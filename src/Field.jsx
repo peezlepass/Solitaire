@@ -36,7 +36,7 @@ export default function Field() {
       <AceSpace cards={state.spacesForAces[3]} aceSpaceIndex={3} />
 
       {state.stacks.map((stack, index) => {
-        return <CardColumn key={index} cards={stack} />;
+        return <CardColumn key={index} cards={stack} stackIndex={index} />;
       })}
       {state.selected.length ? (
         <CardColumn
