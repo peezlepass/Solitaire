@@ -15,12 +15,33 @@ export default function CardColumn({ cards, className, style, stackIndex }) {
   return (
     <div className={`flex flex-col -space-y-48 ${className}`} style={style}>
       {cards.map((cardDefinition, cardIndex) => {
+        const onMouseDown = (event) => {
+          const { pageX, pageY, target } = event;
+          const { left, top } = target.getBoundingClientRect();
+
+          dispatch({
+            type: "SELECT_CARDS_FROM_STACKS",
+            payload: {
+              stackIndex,
+              selected: cards.slice(cardIndex),
+              mouse: {
+                x: pageX,
+                y: pageY,
+              },
+              selectionOffset: {
+                x: pageX - left,
+                y: pageY - top,
+              },
+            },
+          });
+        };
         return (
           <Card
             key={`${cardDefinition.suit}-${cardDefinition.value}`}
             value={cardDefinition.value}
             suit={cardDefinition.suit}
             faceUp={cardDefinition.faceUp}
+            onMouseDown={cardDefinition.faceUp ? onMouseDown : undefined}
             onMouseUp={cardIndex === cards.length - 1 ? onMouseUp : undefined}
           />
         );

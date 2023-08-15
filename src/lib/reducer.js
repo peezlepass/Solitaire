@@ -42,8 +42,24 @@ export function init() {
 
 export function reducer(state, action) {
   switch (action.type) {
-    case "SELECT_CARD_FROM_STACKS":
-      return state;
+    case "SELECT_CARDS_FROM_STACKS":
+      return {
+        ...state,
+        stacks: state.stacks.map((stack, index) => {
+          if (action.payload.stackIndex === index) {
+            // Is the stack we selected from
+            return stack.filter((card) => {
+              return !action.payload.selected.includes(card);
+            });
+          } else {
+            // Is not our stack
+            return stack;
+          }
+        }),
+        selected: action.payload.selected,
+        mouse: action.payload.mouse,
+        selectionOffset: action.payload.selectionOffset,
+      };
     case "PLACE_CARDS_ON_STACK":
       return {
         ...state,
