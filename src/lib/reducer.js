@@ -78,6 +78,8 @@ export function reducer(state, action) {
       return {
         ...state,
         selected: [],
+        selectionSource: null,
+        selectionSourceIndex: null,
         stacks: newStacks.map((stack) => {
           return stack.map((card, cardIndex) => {
             if (cardIndex === stack.length - 1) {
@@ -100,9 +102,6 @@ export function reducer(state, action) {
         },
       };
     case "RETURN_SELECTED_CARDS":
-      if (!state.selected.length) {
-        return state;
-      }
       if (state.selectionSource === "faceUpRow") {
         return {
           ...state,
@@ -171,6 +170,8 @@ export function reducer(state, action) {
       return {
         ...state,
         selected: [],
+        selectionSource: null,
+        selectionSourceIndex: null,
         spacesForAces: state.spacesForAces.map((aceSpace, index) => {
           if (action.payload.aceSpaceIndex === index) {
             // Is the space we dropped on
