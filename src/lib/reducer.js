@@ -100,6 +100,9 @@ export function reducer(state, action) {
         },
       };
     case "RETURN_SELECTED_CARDS":
+      if (!state.selected.length) {
+        return state;
+      }
       if (state.selectionSource === "faceUpRow") {
         return {
           ...state,
