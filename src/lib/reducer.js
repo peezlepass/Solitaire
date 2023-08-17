@@ -119,7 +119,7 @@ export function reducer(state, action) {
           selected: [],
           selectionSource: null,
           faceUpCards: [...state.faceUpCards, state.selected[0]],
-          visibleFaceUpCards: state.visibleFaceUpCards + 1,
+          visibleFaceUpCards: Math.min(3, state.visibleFaceUpCards + 1),
         };
       } else if (state.selectionSource === "stacks") {
         return {
@@ -172,6 +172,7 @@ export function reducer(state, action) {
       return {
         ...state,
         faceUpCards: state.faceUpCards.slice(0, -1),
+        visibleFaceUpCards: state.visibleFaceUpCards - 1,
         selected: action.payload.selected,
         mouse: action.payload.mouse,
         selectionOffset: action.payload.selectionOffset,
