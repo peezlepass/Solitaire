@@ -6,40 +6,42 @@ export default function FaceUpRow({ cards, numberVisible }) {
   const { dispatch } = useContext(SolitaireContext);
   return (
     <div className="flex -space-x-44 col-span-2">
-      {cards.slice(-numberVisible).map((cardDefinition, index) => {
-        let onMouseDown;
-        if (index === numberVisible - 1) {
-          onMouseDown = (event) => {
-            const { pageX, pageY, target } = event;
-            const { left, top } = target.getBoundingClientRect();
-            const action = {
-              type: "SELECT_CARD_FROM_FACE_UP_ROW",
-              payload: {
-                selected: [cardDefinition],
-                mouse: {
-                  x: pageX,
-                  y: pageY,
+      {cards
+        .slice(card.length - numberVisible, cards.length)
+        .map((cardDefinition, index) => {
+          let onMouseDown;
+          if (index === numberVisible - 1) {
+            onMouseDown = (event) => {
+              const { pageX, pageY, target } = event;
+              const { left, top } = target.getBoundingClientRect();
+              const action = {
+                type: "SELECT_CARD_FROM_FACE_UP_ROW",
+                payload: {
+                  selected: [cardDefinition],
+                  mouse: {
+                    x: pageX,
+                    y: pageY,
+                  },
+                  selectionOffset: {
+                    x: pageX - left,
+                    y: pageY - top,
+                  },
                 },
-                selectionOffset: {
-                  x: pageX - left,
-                  y: pageY - top,
-                },
-              },
+              };
+              console.log(action);
+              dispatch(action);
             };
-            console.log(action);
-            dispatch(action);
-          };
-        }
-        return (
-          <Card
-            key={`${cardDefinition.suit}-${cardDefinition.value}`}
-            value={cardDefinition.value}
-            suit={cardDefinition.suit}
-            faceUp={cardDefinition.faceUp}
-            onMouseDown={onMouseDown}
-          />
-        );
-      })}
+          }
+          return (
+            <Card
+              key={`${cardDefinition.suit}-${cardDefinition.value}`}
+              value={cardDefinition.value}
+              suit={cardDefinition.suit}
+              faceUp={cardDefinition.faceUp}
+              onMouseDown={onMouseDown}
+            />
+          );
+        })}
     </div>
   );
 }
