@@ -7,7 +7,7 @@ export default function FaceUpRow({ cards, numberVisible }) {
   return (
     <div className="flex -space-x-44 col-span-2">
       {cards
-        .slice(card.length - numberVisible, cards.length)
+        .slice(cards.length - numberVisible, cards.length)
         .map((cardDefinition, index) => {
           let onMouseDown;
           if (index === numberVisible - 1) {
