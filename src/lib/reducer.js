@@ -1,5 +1,5 @@
-import AceSpace from "../AceSpace";
 import { createDeck, revealCards, hideCards } from "./deck";
+import { isValidAceSpacePlacement, isValidStackPlacement } from "./gameLogic";
 
 export function init() {
   const initialState = {
@@ -66,41 +66,52 @@ export function reducer(state, action) {
         selectionSourceIndex: action.payload.stackIndex,
       };
     case "PLACE_CARDS_ON_STACK":
-      const newStacks = state.stacks.map((stack, index) => {
-        if (action.payload.stackIndex === index) {
-          // Is the space we dropped on
-          return [...stack, ...state.selected];
-        } else {
-          // Is not the space we dropped on
-          return stack;
-        }
-      });
-      return {
-        ...state,
-        selected: [],
-        selectionSource: null,
-        selectionSourceIndex: null,
-        stacks: newStacks.map((stack) => {
-          return stack.map((card, cardIndex) => {
-            if (cardIndex === stack.length - 1) {
-              return {
-                ...card,
-                faceUp: true,
-              };
-            } else {
-              return card;
-            }
-          });
-        }),
-        mouse: {
-          x: null,
-          y: null,
-        },
-        selectionOffset: {
-          x: 0,
-          y: 0,
-        },
-      };
+      const isValidPlacement = true;
+      if (
+        isValidStackPlacement(
+          state.stacks[action.payload.stackIndex],
+          state.selected
+        )
+      ) {
+        const newStacks = state.stacks.map((stack, index) => {
+          if (action.payload.stackIndex === index) {
+            // Is the space we dropped on
+            return [...stack, ...state.selected];
+          } else {
+            // Is not the space we dropped on
+            return stack;
+          }
+        });
+        return {
+          ...state,
+          selected: [],
+          selectionSource: null,
+          selectionSourceIndex: null,
+          stacks: newStacks.map((stack) => {
+            return stack.map((card, cardIndex) => {
+              if (cardIndex === stack.length - 1) {
+                return {
+                  ...card,
+                  faceUp: true,
+                };
+              } else {
+                return card;
+              }
+            });
+          }),
+          mouse: {
+            x: null,
+            y: null,
+          },
+          selectionOffset: {
+            x: 0,
+            y: 0,
+          },
+        };
+      } else {
+        return state;
+      }
+
     case "RETURN_SELECTED_CARDS":
       if (state.selectionSource === "faceUpRow") {
         return {
@@ -135,6 +146,7 @@ export function reducer(state, action) {
       return {
         ...state,
         faceUpCards: [...state.faceUpCards, ...nextThreeCards],
+        visibleFaceUpCards: 3,
         faceDownCards: state.faceDownCards.slice(3),
       };
 
@@ -143,6 +155,7 @@ export function reducer(state, action) {
       return {
         ...state,
         faceUpCards: revealCards(newFaceDownCards.slice(0, 3)),
+        visibleFaceUpCards: 3,
         faceDownCards: newFaceDownCards.slice(3),
       };
 
@@ -167,41 +180,51 @@ export function reducer(state, action) {
       };
 
     case "PLACE_CARD_ON_ACE_SPACE":
-      return {
-        ...state,
-        selected: [],
-        selectionSource: null,
-        selectionSourceIndex: null,
-        spacesForAces: state.spacesForAces.map((aceSpace, index) => {
-          if (action.payload.aceSpaceIndex === index) {
-            // Is the space we dropped on
-            return [...aceSpace, state.selected[0]];
-          } else {
-            // Is not the space we dropped on
-            return aceSpace;
-          }
-        }),
-        stacks: state.stacks.map((stack) => {
-          return stack.map((card, cardIndex) => {
-            if (cardIndex === stack.length - 1) {
-              return {
-                ...card,
-                faceUp: true,
-              };
+      if (
+        isValidAceSpacePlacement(
+          state.spacesForAces[action.payload.aceSpaceIndex],
+          state.selected
+        )
+      ) {
+        return {
+          ...state,
+          selected: [],
+          selectionSource: null,
+          selectionSourceIndex: null,
+          spacesForAces: state.spacesForAces.map((aceSpace, index) => {
+            if (action.payload.aceSpaceIndex === index) {
+              // Is the space we dropped on
+              return [...aceSpace, state.selected[0]];
             } else {
-              return card;
+              // Is not the space we dropped on
+              return aceSpace;
             }
-          });
-        }),
-        mouse: {
-          x: null,
-          y: null,
-        },
-        selectionOffset: {
-          x: 0,
-          y: 0,
-        },
-      };
+          }),
+          stacks: state.stacks.map((stack) => {
+            return stack.map((card, cardIndex) => {
+              if (cardIndex === stack.length - 1) {
+                return {
+                  ...card,
+                  faceUp: true,
+                };
+              } else {
+                return card;
+              }
+            });
+          }),
+          mouse: {
+            x: null,
+            y: null,
+          },
+          selectionOffset: {
+            x: 0,
+            y: 0,
+          },
+        };
+      } else {
+        return state;
+      }
+
     default:
       console.error("Received an unexpected action", error);
   }
