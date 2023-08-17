@@ -5,6 +5,8 @@ import EmptySpace from "./EmptySpace";
 import { useContext } from "react";
 import SolitaireContext from "./lib/context";
 import FaceUpRow from "./FaceUpRow";
+import Winner from "./Winner";
+import { hasWon } from "./lib/gameLogic";
 
 export default function Field() {
   const { state, dispatch } = useContext(SolitaireContext);
@@ -16,8 +18,6 @@ export default function Field() {
   const handleEmptyDeckClick = () => {
     dispatch({ type: "RESET_DECK" });
   };
-
-  console.log("=>state", state);
 
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">
@@ -48,6 +48,7 @@ export default function Field() {
           }}
         />
       ) : undefined}
+      {hasWon(state) ? <Winner /> : null}
     </div>
   );
 }
