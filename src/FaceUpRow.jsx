@@ -5,7 +5,7 @@ import Card from "./Card";
 export default function FaceUpRow({ cards, numberVisible }) {
   const { dispatch } = useContext(SolitaireContext);
   return (
-    <div className="flex -space-x-32 col-span-2">
+    <div className="flex -space-x-44 col-span-2">
       {cards.slice(-numberVisible).map((cardDefinition, index) => {
         let onMouseDown;
         if (index === numberVisible - 1) {

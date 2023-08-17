@@ -8,13 +8,17 @@ export default {
         felt: 'url("./assets/felt.jpg")',
       },
       width: {
-        card: "10.53rem",
+        card: "13rem",
       },
       height: {
-        card: "15.3414rem",
+        card: "18.94rem",
       },
       gridTemplateRows: {
-        field: "15.3414rem 1fr",
+        field: "18.94rem 1fr",
+      },
+      space: {
+        68: "17rem",
+        70: "17.5rem",
       },
     },
   },

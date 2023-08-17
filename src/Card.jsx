@@ -29,6 +29,7 @@ export default function Card({
   onClick,
   onMouseDown,
   onMouseUp,
+  className,
 }) {
   const colour = suitColourMap[suit];
 
@@ -62,7 +63,7 @@ export default function Card({
   };
   return (
     <div
-      className={`${
+      className={`${className} ${
         faceUp ? "border bg-white" : ""
       } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative select-none`}
       onClick={onClick}
