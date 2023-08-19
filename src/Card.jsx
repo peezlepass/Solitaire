@@ -22,6 +22,22 @@ const suitColourMap = {
   clubs: "text-black",
 };
 
+const LayoutMap = {
+  1: Ace,
+  2: Two,
+  3: Three,
+  4: Four,
+  5: Five,
+  6: Six,
+  7: Seven,
+  8: Eight,
+  9: Nine,
+  10: Ten,
+  11: Jack,
+  12: Queen,
+  13: King,
+};
+
 export default function Card({
   suit,
   value,
@@ -31,9 +47,10 @@ export default function Card({
   onMouseUp,
   className,
 }) {
-  const colour = suitColourMap[suit];
-
   const { dispatch } = useContext(SolitaireContext);
+  const colour = suitColourMap[suit];
+  const Layout = LayoutMap[value];
+
   const mouseDownHandler = (mouseDownEvent) => {
     if (!onMouseDown) {
       return;
@@ -72,6 +89,7 @@ export default function Card({
     >
       {faceUp ? (
         <>
+          <Layout />
           <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
             <span className="text-xl font-bold">
               {valueMap[value] || value}
@@ -88,6 +106,56 @@ export default function Card({
       ) : (
         <div className="w-full h-full bg-card-back bg-cover"></div>
       )}
+    </div>
+  );
+}
+
+function Ace({ suit }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+      <span>A</span>
+    </div>
+  );
+}
+
+function Two({ suit }) {}
+
+function Three({ suit }) {}
+
+function Four({ suit }) {}
+
+function Five({ suit }) {}
+
+function Six({ suit }) {}
+
+function Seven({ suit }) {}
+
+function Eight({ suit }) {}
+
+function Nine({ suit }) {}
+
+function Ten({ suit }) {}
+
+function Jack({ suit }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+      <span>J</span>
+    </div>
+  );
+}
+
+function Queen({ suit }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+      <span>Q</span>
+    </div>
+  );
+}
+
+function King({ suit }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+      <span>K</span>
     </div>
   );
 }
