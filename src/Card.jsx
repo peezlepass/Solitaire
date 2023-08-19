@@ -152,7 +152,25 @@ function Four({ suit }) {
   );
 }
 
-function Five({ suit }) {}
+function Five({ suit }) {
+  return (
+    <>
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+        <div className="flex flex-col justify-center items-center space-y-32">
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+        <div className="flex flex-col justify-center items-center space-y-32">
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl">
+        <span>{suitEmojiMap[suit]}</span>
+      </div>
+    </>
+  );
+}
 
 function Six({ suit }) {
   return (
