@@ -227,8 +227,10 @@ function Eight({ suit }) {
         </div>
       </div>
       <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl">
-        <span className="relative -top-12">{suitEmojiMap[suit]}</span>
-        <span className="relative -bottom-12">{suitEmojiMap[suit]}</span>
+        <span className="relative -top-6">{suitEmojiMap[suit]}</span>
+        <span className="relative -bottom-6 rotate-180">
+          {suitEmojiMap[suit]}
+        </span>
       </div>
     </>
   );
