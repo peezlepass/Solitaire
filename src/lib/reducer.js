@@ -65,6 +65,24 @@ export function reducer(state, action) {
         selectionSource: "stacks",
         selectionSourceIndex: action.payload.stackIndex,
       };
+    case "SELECT_CARD_FROM_ACE_SPACE":
+      return {
+        ...state,
+        spacesForAces: state.spacesForAces.map((aceSpace, index) => {
+          if (action.payload.aceSpaceIndex === index) {
+            return aceSpace.filter((card) => {
+              return card !== action.payload.selected;
+            });
+          } else {
+            return aceSpace;
+          }
+        }),
+        selected: [action.payload.selected],
+        selectionSource: "aceSpace",
+        selectionSourceIndex: action.payload.aceSpaceIndex,
+        mouse: action.payload.mouse,
+        selectionOffset: action.payload.selectionOffset,
+      };
     case "PLACE_CARDS_ON_STACK":
       const isValidPlacement = true;
       if (
@@ -127,6 +145,14 @@ export function reducer(state, action) {
           selected: [],
           selectionSource: null,
           selectionSourceIndex: null,
+          mouse: {
+            x: null,
+            y: null,
+          },
+          selectionOffset: {
+            x: 0,
+            y: 0,
+          },
           stacks: state.stacks.map((stack, index) => {
             if (state.selectionSourceIndex === index) {
               return [...stack, ...state.selected];
@@ -134,6 +160,28 @@ export function reducer(state, action) {
               return stack;
             }
           }),
+        };
+      } else if (state.selectionSource === "aceSpace") {
+        return {
+          ...state,
+          selected: [],
+          selectionSource: null,
+          selectionSourceIndex: null,
+          spacesForAces: state.spacesForAces.map((aceSpace, index) => {
+            if (state.selectionSourceIndex === index) {
+              return [...aceSpace, ...state.selected];
+            } else {
+              return aceSpace;
+            }
+          }),
+          mouse: {
+            x: null,
+            y: null,
+          },
+          selectionOffset: {
+            x: 0,
+            y: 0,
+          },
         };
       } else {
         return state;

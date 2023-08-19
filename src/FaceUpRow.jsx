@@ -28,7 +28,6 @@ export default function FaceUpRow({ cards, numberVisible }) {
                   },
                 },
               };
-              console.log(action);
               dispatch(action);
             };
           }
