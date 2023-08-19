@@ -79,7 +79,7 @@ export default function Card({
             <span className="text-2xl">{suitEmojiMap[suit]}</span>
           </span>
           <span className="absolute bottom-0.5 right-0.5 flex flex-col items-center -space-y-1">
-            <span className="text-2xl totate-180">{suitEmojiMap[suit]}</span>
+            <span className="text-2xl rotate-180">{suitEmojiMap[suit]}</span>
             <span className="text-xl font-bold rotate-180">
               {valueMap[value] || value}
             </span>
