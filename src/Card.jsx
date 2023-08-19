@@ -189,9 +189,50 @@ function Six({ suit }) {
   );
 }
 
-function Seven({ suit }) {}
+function Seven({ suit }) {
+  return (
+    <>
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+        <div className="flex flex-col justify-center items-center space-y-12">
+          <span>{suitEmojiMap[suit]}</span>
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+        <div className="flex flex-col justify-center items-center space-y-12">
+          <span>{suitEmojiMap[suit]}</span>
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl">
+        <span className="relative -top-12">{suitEmojiMap[suit]}</span>
+      </div>
+    </>
+  );
+}
 
-function Eight({ suit }) {}
+function Eight({ suit }) {
+  return (
+    <>
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+        <div className="flex flex-col justify-center items-center space-y-12">
+          <span>{suitEmojiMap[suit]}</span>
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+        <div className="flex flex-col justify-center items-center space-y-12">
+          <span>{suitEmojiMap[suit]}</span>
+          <span>{suitEmojiMap[suit]}</span>
+          <span className="rotate-180">{suitEmojiMap[suit]}</span>
+        </div>
+      </div>
+      <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl">
+        <span className="relative -top-12">{suitEmojiMap[suit]}</span>
+        <span className="relative -bottom-12">{suitEmojiMap[suit]}</span>
+      </div>
+    </>
+  );
+}
 
 function Nine({ suit }) {}
 
