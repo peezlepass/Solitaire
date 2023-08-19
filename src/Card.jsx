@@ -89,7 +89,7 @@ export default function Card({
     >
       {faceUp ? (
         <>
-          <Layout />
+          <Layout suit={suit} />
           <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
             <span className="text-xl font-bold">
               {valueMap[value] || value}
@@ -118,9 +118,24 @@ function Ace({ suit }) {
   );
 }
 
-function Two({ suit }) {}
+function Two({ suit }) {
+  return (
+    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-32">
+      <span>{suitEmojiMap[suit]}</span>
+      <span className="rotate-180">{suitEmojiMap[suit]}</span>
+    </div>
+  );
+}
 
-function Three({ suit }) {}
+function Three({ suit }) {
+  return (
+    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-12">
+      <span>{suitEmojiMap[suit]}</span>
+      <span>{suitEmojiMap[suit]}</span>
+      <span className="rotate-180">{suitEmojiMap[suit]}</span>
+    </div>
+  );
+}
 
 function Four({ suit }) {}
 
