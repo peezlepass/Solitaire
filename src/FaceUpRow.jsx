@@ -12,8 +12,8 @@ export default function FaceUpRow({ cards, numberVisible }) {
           let onMouseDown;
           if (index === numberVisible - 1) {
             onMouseDown = (event) => {
-              const { pageX, pageY, target } = event;
-              const { left, top } = target.getBoundingClientRect();
+              const { pageX, pageY, currentTarget } = event;
+              const { left, top } = currentTarget.getBoundingClientRect();
               const action = {
                 type: "SELECT_CARD_FROM_FACE_UP_ROW",
                 payload: {

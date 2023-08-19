@@ -27,8 +27,8 @@ export default function CardColumn({ cards, className, style, stackIndex }) {
     <div className={`flex flex-col -space-y-72 ${className}`} style={style}>
       {cards.map((cardDefinition, cardIndex) => {
         const onMouseDown = (event) => {
-          const { pageX, pageY, target } = event;
-          const { left, top } = target.getBoundingClientRect();
+          const { pageX, pageY, currentTarget } = event;
+          const { left, top } = currentTarget.getBoundingClientRect();
 
           dispatch({
             type: "SELECT_CARDS_FROM_STACKS",
