@@ -65,7 +65,7 @@ export default function Card({
     <div
       className={`${className} ${
         faceUp ? "border bg-white" : ""
-      } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative select-none`}
+      } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative select-none ${colour}`}
       onClick={onClick}
       onMouseDown={mouseDownHandler}
       onMouseUp={onMouseUp}
@@ -73,16 +73,14 @@ export default function Card({
       {faceUp ? (
         <>
           <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
-            <span className={`${colour} text-xl font-bold`}>
+            <span className="text-xl font-bold">
               {valueMap[value] || value}
             </span>
-            <span className={`${colour} text-2xl`}>{suitEmojiMap[suit]}</span>
+            <span className="text-2xl">{suitEmojiMap[suit]}</span>
           </span>
           <span className="absolute bottom-0.5 right-0.5 flex flex-col items-center -space-y-1">
-            <span className={`${colour} text-2xl totate-180`}>
-              {suitEmojiMap[suit]}
-            </span>
-            <span className={`${colour} text-xl font-bold rotate-180`}>
+            <span className="text-2xl totate-180">{suitEmojiMap[suit]}</span>
+            <span className="text-xl font-bold rotate-180">
               {valueMap[value] || value}
             </span>
           </span>
