@@ -19,12 +19,18 @@ export default function Field() {
     dispatch({ type: "RESET_DECK" });
   };
 
+  const isDeckEmpty =
+    state.faceDownCards.lentgh === 0 && state.faceUpCards.length <= 3;
+
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">
       {state.faceDownCards.length ? (
         <Card faceUp={false} onClick={handleDeckClick} />
       ) : (
-        <EmptySpace onClick={handleEmptyDeckClick} />
+        <EmptySpace
+          symbol={isDeckEmpty ? "O" : "X"}
+          onClick={handleEmptyDeckClick}
+        />
       )}
       <FaceUpRow
         cards={state.faceUpCards}
