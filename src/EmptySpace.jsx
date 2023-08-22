@@ -32,5 +32,26 @@ function Circle() {
 }
 
 function Cross() {
-  return <div>X</div>;
+  return (
+    <svg width="100%" height="100%">
+      <line
+        x1="30%"
+        y1="35%"
+        x2="70%"
+        y2="65%"
+        stroke="red"
+        strokeWidth="15"
+        fill="transparent"
+      />
+      <line
+        x1="70%"
+        y1="35%"
+        x2="30%"
+        y2="65%"
+        stroke="red"
+        strokeWidth="15"
+        fill="transparent"
+      />
+    </svg>
+  );
 }
