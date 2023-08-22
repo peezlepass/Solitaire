@@ -1,17 +1,9 @@
 export default function EmptySpace({ onClick, onMouseUp, symbol }) {
   let innerSymbol;
   if (symbol === "O") {
-    innerSymbol = (
-      <div className="text-green-300 font-bold text-8xl h-full flex justify-center items-center">
-        O
-      </div>
-    );
+    innerSymbol = <Circle />;
   } else if (symbol === "X") {
-    innerSymbol = (
-      <div className="text-red-600 font-bold text-8xl h-full flex justify-center items-center">
-        X
-      </div>
-    );
+    innerSymbol = <Cross />;
   }
   return (
     <div
@@ -22,4 +14,23 @@ export default function EmptySpace({ onClick, onMouseUp, symbol }) {
       {innerSymbol}
     </div>
   );
+}
+
+function Circle() {
+  return (
+    <svg width="100%" height="100%">
+      <circle
+        cx="50%"
+        cy="50%"
+        r="70"
+        stroke="rgba(100, 247, 67, 1"
+        strokeWidth="15"
+        fill="transparent"
+      />
+    </svg>
+  );
+}
+
+function Cross() {
+  return <div>X</div>;
 }

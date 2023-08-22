@@ -28,7 +28,7 @@ export default function Field() {
         <Card faceUp={false} onClick={handleDeckClick} />
       ) : (
         <EmptySpace
-          symbol={isDeckEmpty ? "O" : "X"}
+          symbol={isDeckEmpty ? "X" : "O"}
           onClick={handleEmptyDeckClick}
         />
       )}
