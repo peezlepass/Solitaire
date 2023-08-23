@@ -52,6 +52,7 @@ export default function Card({
   const Layout = LayoutMap[value];
 
   const mouseDownHandler = (mouseDownEvent) => {
+    mouseDownEvent.preventDefault();
     if (!onMouseDown) {
       return;
     }

@@ -57,9 +57,9 @@ export function isValidAceSpacePlacement(aceSpaceCards, selectedCards) {
 export function hasWon(state) {
   return (
     state.spacesForAces[0].length +
-      state.spacesForAces[1] +
+      state.spacesForAces[1].length +
       state.spacesForAces[2].length +
-      state.spacesForAces[3] ===
+      state.spacesForAces[3].length ===
     52
   );
 }
