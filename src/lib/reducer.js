@@ -185,6 +185,58 @@ export function reducer(state, action) {
       } else {
         return state;
       }
+    case "RIGHT_CLICK_LAST_CARD_IN_COLUMN":
+      // Figure out the stack
+      const stack = state.stacks[action.payload.stackIndex];
+      // Figure out the last card they clicked on
+      const card = stack[stack.length - 1];
+      // Loop over ace spaces to find a valid place to put the card
+      for (let i = 0; i < state.spacesForAces.length; i++) {
+        // use our game logic to test if it's valid
+        if (isValidAceSpacePlacement([state.spacesForAces[i]], [card])) {
+          return {
+            ...state,
+            spacesForAces: state.spacesForAces.map((aceSpace, index) => {
+              if (i === index) {
+                // Is the valid space, add it
+                return [...aceSpace, card];
+              } else {
+                // Is not the space we are jumping to
+                return aceSpace;
+              }
+            }),
+            // Remove the card from the stack, and make sure the last card is face up
+            stacks: state.stacks.map((stack, index) => {
+              // If it's the stack we care about
+              if (index === action.payload.stackIndex) {
+                // Take away the card
+                const newStack = stack.slice(0, stack.length - 1);
+                // Set last card to face up
+                return newStack.map((card, cardIndex) => {
+                  if (cardIndex === newStack.length - 1) {
+                    return {
+                      ...card,
+                      faceUp: true,
+                    };
+                  } else {
+                    return card;
+                  }
+                });
+              } else {
+                // not a stack we care about, do nothing.
+                return stack;
+              }
+            }),
+          };
+        } else {
+          // if it's not valid in this ace space, 'continue' so we do try the next one.
+          continue;
+        }
+      }
+
+      return {
+        ...state,
+      };
 
     case "REVEAL_CARDS":
       const nextThreeCards = revealCards(state.faceDownCards.slice(0, 3));
