@@ -5,7 +5,7 @@ export function init() {
   const initialState = {
     faceDownCards: [],
     faceUpCards: [],
-    visibleFaceUpCards: 3,
+    hiddenCards: [],
     spacesForAces: [[], [], [], []],
     stacks: [[], [], [], [], [], [], []],
 
@@ -137,7 +137,6 @@ export function reducer(state, action) {
           selected: [],
           selectionSource: null,
           faceUpCards: [...state.faceUpCards, state.selected[0]],
-          visibleFaceUpCards: Math.min(3, state.visibleFaceUpCards + 1),
         };
       } else if (state.selectionSource === "stacks") {
         return {
@@ -188,23 +187,23 @@ export function reducer(state, action) {
       }
 
     case "REVEAL_CARDS":
-      const nextThreeCards = state.faceDownCards.slice(0, 3).map((card) => {
-        return { ...card, faceUp: true };
-      });
+      const nextThreeCards = revealCards(state.faceDownCards.slice(0, 3));
+
       return {
         ...state,
-        faceUpCards: [...state.faceUpCards, ...nextThreeCards],
-        visibleFaceUpCards: 3,
+        faceUpCards: nextThreeCards,
+        hiddenCards: [...state.hiddenCards, ...state.faceUpCards],
         faceDownCards: state.faceDownCards.slice(3),
       };
 
     case "RESET_DECK":
-      const newFaceDownCards = hideCards(state.faceUpCards);
+      const hiddenCards = [...state.hiddenCards, ...state.faceUpCards];
+      const newFaceDownCards = hideCards(hiddenCards);
       return {
         ...state,
         faceUpCards: revealCards(newFaceDownCards.slice(0, 3)),
-        visibleFaceUpCards: 3,
         faceDownCards: newFaceDownCards.slice(3),
+        hiddenCards: [],
       };
 
     case "MOVE_MOUSE":
@@ -220,7 +219,6 @@ export function reducer(state, action) {
       return {
         ...state,
         faceUpCards: state.faceUpCards.slice(0, -1),
-        visibleFaceUpCards: state.visibleFaceUpCards - 1,
         selected: action.payload.selected,
         mouse: action.payload.mouse,
         selectionOffset: action.payload.selectionOffset,

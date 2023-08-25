@@ -2,9 +2,9 @@ import { useContext } from "react";
 import SolitaireContext from "./lib/context";
 import Card from "./Card";
 
-export default function FaceUpRow({ cards, numberVisible }) {
+export default function FaceUpRow({ cards }) {
   const { dispatch } = useContext(SolitaireContext);
-  const faceUpCards = cards.slice(cards.length - numberVisible, cards.length);
+  const faceUpCards = cards;
   return (
     <div className="flex -space-x-44 col-span-2">
       {faceUpCards.map((cardDefinition, index) => {

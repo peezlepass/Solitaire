@@ -20,7 +20,7 @@ export default function Field() {
   };
 
   const isDeckEmpty =
-    state.faceDownCards.lentgh === 0 && state.faceUpCards.length <= 3;
+    state.faceDownCards.length === 0 && state.faceUpCards.length <= 3;
 
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">
@@ -32,10 +32,7 @@ export default function Field() {
           onClick={handleEmptyDeckClick}
         />
       )}
-      <FaceUpRow
-        cards={state.faceUpCards}
-        numberVisible={state.visibleFaceUpCards}
-      />
+      <FaceUpRow cards={state.faceUpCards} />
       <AceSpace cards={state.spacesForAces[0]} aceSpaceIndex={0} />
       <AceSpace cards={state.spacesForAces[1]} aceSpaceIndex={1} />
       <AceSpace cards={state.spacesForAces[2]} aceSpaceIndex={2} />
