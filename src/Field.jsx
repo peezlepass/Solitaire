@@ -20,7 +20,9 @@ export default function Field() {
   };
 
   const isDeckEmpty =
-    state.faceDownCards.length === 0 && state.faceUpCards.length <= 3;
+    state.faceDownCards.length === 0 &&
+    state.faceUpCards.length <= 3 &&
+    state.hiddenCards.length === 0;
 
   return (
     <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field gap-8">

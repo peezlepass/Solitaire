@@ -253,8 +253,8 @@ export function reducer(state, action) {
       const newFaceDownCards = hideCards(hiddenCards);
       return {
         ...state,
-        faceUpCards: revealCards(newFaceDownCards.slice(0, 3)),
-        faceDownCards: newFaceDownCards.slice(3),
+        faceUpCards: [],
+        faceDownCards: newFaceDownCards,
         hiddenCards: [],
       };
 
