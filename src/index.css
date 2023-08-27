@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 500px) {
+  .field {
+    display: flex;
+    /* grid-template-rows: 1fr;
+    grid-template-columns: 1fr; */
+    justify-content: center;
+    padding-top: 250px;
+    /* align-items: center; */
+    /* height: 1dvh; */
+  }
+
+  .field * {
+    display: none;
+  }
+
+  .field .rotation-message {
+    display: block;
+  }
+}

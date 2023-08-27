@@ -4,7 +4,7 @@ export default {
   theme: {
     screens: {
       phone: {
-        max: "1024px",
+        max: "840px",
       },
     },
     extend: {

@@ -1,3 +1,4 @@
+import RotationMessage from "./RotationMessage";
 import Card from "./Card";
 import CardColumn from "./CardColumn";
 import AceSpace from "./AceSpace";
@@ -25,7 +26,8 @@ export default function Field() {
     state.hiddenCards.length === 0;
 
   return (
-    <div className="h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field phone:grid-rows-field-mobile gap-8">
+    <div className="field h-screen w-screen bg-felt bg-repeat p-8 overflow-hidden grid grid-cols-7 grid-rows-field phone:grid-rows-field-mobile gap-8">
+      <RotationMessage />
       {state.faceDownCards.length ? (
         <Card faceUp={false} onClick={handleDeckClick} />
       ) : (

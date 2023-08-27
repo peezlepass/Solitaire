@@ -58,14 +58,17 @@ export default function Card({
     }
 
     const mouseMoveHandler = (mouseMoveEvent) => {
-      const { pageX, pageY } = mouseMoveEvent;
-      dispatch({
-        type: "MOVE_MOUSE",
-        payload: {
-          x: pageX,
-          y: pageY,
-        },
-      });
+      if (mouseMoveEvent.touches) {
+      } else {
+        const { pageX, pageY } = mouseMoveEvent;
+        dispatch({
+          type: "MOVE_MOUSE",
+          payload: {
+            x: pageX,
+            y: pageY,
+          },
+        });
+      }
     };
     const mouseUpHandler = () => {
       window.removeEventListener("mousemove", mouseMoveHandler);
@@ -96,7 +99,7 @@ export default function Card({
     >
       {faceUp ? (
         <>
-          {/* <Layout suit={suit} /> */}
+          <Layout suit={suit} />
           <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
             <span className="text-xl font-bold">
               {valueMap[value] || value}
@@ -119,7 +122,7 @@ export default function Card({
 
 function Ace({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif phone:hidden">
       <span>A</span>
     </div>
   );
@@ -127,7 +130,7 @@ function Ace({ suit }) {
 
 function Two({ suit }) {
   return (
-    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-32">
+    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-32 phone:hidden">
       <span>{suitEmojiMap[suit]}</span>
       <span className="rotate-180">{suitEmojiMap[suit]}</span>
     </div>
@@ -136,7 +139,7 @@ function Two({ suit }) {
 
 function Three({ suit }) {
   return (
-    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-12">
+    <div className="absolute inset-0 flex flex-col justify-center items-center text-5xl space-y-12 phone:hidden">
       <span>{suitEmojiMap[suit]}</span>
       <span>{suitEmojiMap[suit]}</span>
       <span className="rotate-180">{suitEmojiMap[suit]}</span>
@@ -146,7 +149,7 @@ function Three({ suit }) {
 
 function Four({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+    <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
       <div className="flex flex-col justify-center items-center space-y-32">
         <span>{suitEmojiMap[suit]}</span>
         <span className="rotate-180">{suitEmojiMap[suit]}</span>
@@ -162,7 +165,7 @@ function Four({ suit }) {
 function Five({ suit }) {
   return (
     <>
-      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
         <div className="flex flex-col justify-center items-center space-y-32">
           <span>{suitEmojiMap[suit]}</span>
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
@@ -172,7 +175,7 @@ function Five({ suit }) {
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl">
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl phone:hidden">
         <span>{suitEmojiMap[suit]}</span>
       </div>
     </>
@@ -181,7 +184,7 @@ function Five({ suit }) {
 
 function Six({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+    <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
       <div className="flex flex-col justify-center items-center space-y-12">
         <span>{suitEmojiMap[suit]}</span>
         <span>{suitEmojiMap[suit]}</span>
@@ -199,7 +202,7 @@ function Six({ suit }) {
 function Seven({ suit }) {
   return (
     <>
-      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
         <div className="flex flex-col justify-center items-center space-y-12">
           <span>{suitEmojiMap[suit]}</span>
           <span>{suitEmojiMap[suit]}</span>
@@ -211,7 +214,7 @@ function Seven({ suit }) {
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl">
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl phone:hidden">
         <span className="relative -top-12">{suitEmojiMap[suit]}</span>
       </div>
     </>
@@ -221,7 +224,7 @@ function Seven({ suit }) {
 function Eight({ suit }) {
   return (
     <>
-      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
         <div className="flex flex-col justify-center items-center space-y-12">
           <span>{suitEmojiMap[suit]}</span>
           <span>{suitEmojiMap[suit]}</span>
@@ -233,7 +236,7 @@ function Eight({ suit }) {
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
         </div>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl">
+      <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl phone:hidden">
         <span className="relative -top-6">{suitEmojiMap[suit]}</span>
         <span className="relative -bottom-6 rotate-180">
           {suitEmojiMap[suit]}
@@ -246,7 +249,7 @@ function Eight({ suit }) {
 function Nine({ suit }) {
   return (
     <>
-      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
         <div className="flex flex-col justify-center items-center space-y-5">
           <span>{suitEmojiMap[suit]}</span>
           <span>{suitEmojiMap[suit]}</span>
@@ -260,7 +263,7 @@ function Nine({ suit }) {
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl">
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-5xl phone:hidden">
         <span>{suitEmojiMap[suit]}</span>
       </div>
     </>
@@ -270,7 +273,7 @@ function Nine({ suit }) {
 function Ten({ suit }) {
   return (
     <>
-      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12">
+      <div className="absolute inset-0 flex items-center justify-center text-5xl space-x-12 phone:hidden">
         <div className="flex flex-col justify-center items-center space-y-5">
           <span>{suitEmojiMap[suit]}</span>
           <span>{suitEmojiMap[suit]}</span>
@@ -284,7 +287,7 @@ function Ten({ suit }) {
           <span className="rotate-180">{suitEmojiMap[suit]}</span>
         </div>
       </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl">
+      <div className="absolute inset-0 flex flex-col items-center justify-center font-bold text-5xl phone:hidden">
         <span className="relative -top-10">{suitEmojiMap[suit]}</span>
         <span className="relative -bottom-10 rotate-180">
           {suitEmojiMap[suit]}
@@ -296,7 +299,7 @@ function Ten({ suit }) {
 
 function Jack({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif phone:hidden">
       <span>J</span>
     </div>
   );
@@ -304,7 +307,7 @@ function Jack({ suit }) {
 
 function Queen({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif phone:hidden">
       <span>Q</span>
     </div>
   );
@@ -312,7 +315,7 @@ function Queen({ suit }) {
 
 function King({ suit }) {
   return (
-    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif">
+    <div className="absolute inset-0 flex items-center justify-center font-bold text-6xl font-serif phone:hidden">
       <span>K</span>
     </div>
   );
