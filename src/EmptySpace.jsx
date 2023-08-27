@@ -7,7 +7,7 @@ export default function EmptySpace({ onClick, onMouseUp, symbol }) {
   }
   return (
     <div
-      className="w-card h-card rounded-lg ring-4 ring-white"
+      className="w-card h-card phone:w-card-mobile phone:h-card-mobile rounded-lg ring-4 ring-white"
       onClick={onClick}
       onMouseUp={onMouseUp}
     >

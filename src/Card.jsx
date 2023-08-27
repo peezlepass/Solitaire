@@ -70,12 +70,16 @@ export default function Card({
     const mouseUpHandler = () => {
       window.removeEventListener("mousemove", mouseMoveHandler);
       window.removeEventListener("mouseup", mouseUpHandler);
+      window.removeEventListener("touchmove", mouseMoveHandler);
+      window.removeEventListener("touchup", mouseUpHandler);
       dispatch({
         type: "RETURN_SELECTED_CARDS",
       });
     };
     window.addEventListener("mousemove", mouseMoveHandler);
     window.addEventListener("mouseup", mouseUpHandler);
+    window.addEventListener("touchmove", mouseMoveHandler);
+    window.addEventListener("touchup", mouseUpHandler);
 
     onMouseDown(mouseDownEvent);
   };
@@ -83,14 +87,16 @@ export default function Card({
     <div
       className={`${className} ${
         faceUp ? "border bg-white" : ""
-      } rounded-lg border-gray-300 shadow-sm w-card h-card flex items-center justify-center relative select-none ${colour}`}
+      } rounded-lg border-gray-300 shadow-sm w-card h-card phone:w-card-mobile phone:h-card-mobile flex items-center justify-center relative select-none ${colour}`}
       onClick={onClick}
       onMouseDown={mouseDownHandler}
+      onTouchDown={mouseDownHandler}
       onMouseUp={onMouseUp}
+      onTouchUp={onMouseUp}
     >
       {faceUp ? (
         <>
-          <Layout suit={suit} />
+          {/* <Layout suit={suit} /> */}
           <span className="absolute top-0.5 left-0.5 flex flex-col items-center -space-y-1">
             <span className="text-xl font-bold">
               {valueMap[value] || value}

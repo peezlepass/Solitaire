@@ -6,7 +6,7 @@ export default function FaceUpRow({ cards }) {
   const { dispatch } = useContext(SolitaireContext);
   const faceUpCards = cards;
   return (
-    <div className="flex -space-x-44 col-span-2">
+    <div className="flex -space-x-44 phone:-space-x-16 col-span-2">
       {faceUpCards.map((cardDefinition, index) => {
         let onMouseDown;
         if (index === faceUpCards.length - 1) {

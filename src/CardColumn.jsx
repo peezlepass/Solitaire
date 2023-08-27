@@ -24,7 +24,10 @@ export default function CardColumn({ cards, className, style, stackIndex }) {
     firstFaceUpCard = Infinity;
   }
   return (
-    <div className={`flex flex-col -space-y-72 ${className}`} style={style}>
+    <div
+      className={`flex flex-col -space-y-72 phone:-space-y-28 ${className}`}
+      style={style}
+    >
       {cards.map((cardDefinition, cardIndex) => {
         const onMouseDown = (event) => {
           const { pageX, pageY, currentTarget } = event;
@@ -52,7 +55,9 @@ export default function CardColumn({ cards, className, style, stackIndex }) {
             value={cardDefinition.value}
             suit={cardDefinition.suit}
             faceUp={cardDefinition.faceUp}
-            className={cardIndex > firstFaceUpCard ? "!-mt-64 " : ""}
+            className={
+              cardIndex > firstFaceUpCard ? "!-mt-64 !phone:-mt-24 " : ""
+            }
             onMouseDown={cardDefinition.faceUp ? onMouseDown : undefined}
             onMouseUp={cardIndex === cards.length - 1 ? onMouseUp : undefined}
           />
