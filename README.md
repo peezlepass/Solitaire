@@ -24,7 +24,7 @@ You actually don't have to install anything! Just visit the deployed version <a 
 
 <li>Kings (or sequences that start with a King) can be placed on an empty column spot.</li>
 <p align="center">
-  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/7ea686b6-bbfe-4af2-9ed4-0da1d6fccac2">
+  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/48bb0706-9d8d-41cd-9350-33a03a538112">
 </p>
 
 <li>You can also move a sequence of cards if they are all in descending order.</li>
