@@ -61,7 +61,7 @@ The game is won when all cards are successfully moved to the foundation piles, w
 * Drag & Drop.
 * Fireworks for the winner!
 * Deployment.
-* The Fisher–Yates shuffle.A standard 52-card deck is shuffled for you with The Fisher–Yates algorithm.****
+* The Fisher–Yates shuffle.
 
 ## Future plans
 
