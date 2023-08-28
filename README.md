@@ -51,10 +51,6 @@ You actually don't have to install anything! Just visit the deployed version <a 
 The game is won when all cards are successfully moved to the foundation piles, with each foundation pile containing all cards of a single suit in ascending order (from Ace to King).
 
 <p align="center">
-  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/c49c5ca7-fd38-4e20-ae09-683623bb4364">
-</p>
-
-<p align="center">
   <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/34c064f2-62ec-4f29-b2b5-2cffa37c68b1">
 </p>
 
