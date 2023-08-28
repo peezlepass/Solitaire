@@ -2,13 +2,15 @@
 
 ## Installation
 
+
+
 You actually don't have to install anything! Just visit the deployed version <a href="https://peezlepass.com/solitaire/">here</a>.
 
 ## How to Play (I hope you know the rules!)
 
 <li>Click on a tile to reveal what is underneath it. If it is a bomb, the game is over. To restart - click on the emoji.</li>
 <p align="center">
-  <img width="640" alt="restart" src="https://user-images.githubusercontent.com/104982744/226172604-48027d47-7a94-4408-8ad4-25722fe84f19.gif">
+  <img width="52" alt="Screen Shot 2023-08-28 at 14 31 37" src="https://github.com/peezlepass/Solitaire/assets/104982744/6a5dc789-2f90-4961-a1f2-44def22e4f26">
 </p>
 <li>If the tile is not a bomb, it will display a number indicating how many bombs are adjacent to it.</li>
 <li>Use this information to deduce the location of bombs and mark them with a flag by right-clicking on the tile.</li>
