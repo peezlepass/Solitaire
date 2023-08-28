@@ -19,7 +19,7 @@ You actually don't have to install anything! Just visit the deployed version <a 
 
 <li>You can move cards between columns and build descending sequences of alternating colors. If you are not building a descending sequence correctly - the card will return to its original spot.</li>
 <p align="center">
-  <img width="640" alt="OnlyAcesCanGoUp" src="https://github.com/peezlepass/Solitaire/assets/104982744/19fac72b-e5d4-4bbd-b8de-36ac46f2d1c8">
+  <img width="640" alt="OnlyAcesCanGoUp" src="https://github.com/peezlepass/Solitaire/assets/104982744/b3a76d3b-a0f5-4c8b-9c41-ecf665801833">
 </p>
 
 <li>Kings (or sequences that start with a King) can be placed on an empty column spot.</li>
