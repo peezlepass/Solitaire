@@ -34,12 +34,12 @@ You actually don't have to install anything! Just visit the deployed version <a 
 
 <li>Green O indicates that there are still cards in the deck</li>
 <p align="center">
-  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/d5126527-9be6-4a6e-af10-907ae53358ec">
+  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/11b3ac9c-16dc-41de-803c-f6cd6a268296">
 </p>
 
 <li>Red X indicates that there are no cards in the deck</li>
 <p align="center">
-  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/8a9e1078-c401-400f-a15a-d4e9cfed6d18">
+  <img width="640" alt="flags" src="https://github.com/peezlepass/Solitaire/assets/104982744/07824cdd-a0e7-42ee-b68d-37c80d240716">
 </p>
 
 <li>You can reuse cards from the foundation piles and move them back to the game</li>
