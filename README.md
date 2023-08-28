@@ -6,6 +6,13 @@
 
 You actually don't have to install anything! Just visit the deployed version <a href="https://peezlepass.com/solitaire/">here</a>.
 
+## Game Layout
+
+<h1>A standard 52-card deck is shuffled for you with The Fisher–Yates algorithm.</h1>
+<li>Card columns: There are seven columns of cards from left to right. The first column has one card, the second has two, the third has three, and so on, until the seventh column has seven cards. The last card in the column is face up.</li>
+<li>Deck: The remaining deck is face-down with 3 cards revealed already. When you click on it, the next 3 cards are revealed.</li>
+<li>Foundation Piles: are empty and are awaiting for you to fill them up in ascending order (starting with Ace).</li>
+
 ## How to Play (I hope you know the rules!)
 
 <li>Cards from the deck can be played on the card columns or foundation piles.</li>
