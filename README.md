@@ -10,7 +10,7 @@ You actually don't have to install anything! Just visit the deployed version <a 
 
 <li>Only Aces can go to a reserved spot for them.</li>
 <p align="center">
-  <img width="52" alt="Screen Shot 2023-08-28 at 14 31 37" src="https://github.com/peezlepass/Solitaire/assets/104982744/daae134d-5e4b-4e84-ad04-57955ae7eb10">
+  <img width="640" alt="OnlyAcesCanGoUp" src="https://github.com/peezlepass/Solitaire/assets/104982744/daae134d-5e4b-4e84-ad04-57955ae7eb10">
 </p>
 
 <li>Only Kings can go to the empty column space.</li>
